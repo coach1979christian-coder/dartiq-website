@@ -4,122 +4,188 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#07111f">
-  <title>DARTIQ | Train Smarter. Play Better.</title>
+  <meta name="theme-color" content="#030c18">
+
+  <title>DARTIQ | Stop Guessing. Start Improving.</title>
+  <meta name="description" content="DARTIQ intelligent darts coaching. Identify weaknesses, understand performance, and train with purpose.">
+
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
-      background: #07111f;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      text-align: center;
+      background: #030c18;
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
-    main {
+    .hero {
       min-height: 100vh;
+      min-height: 100svh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 30px 20px;
+      padding: 24px 16px 48px;
+      background:
+        radial-gradient(
+          ellipse at 50% 70%,
+          rgba(39, 184, 255, 0.12),
+          transparent 65%
+        ),
+        #030c18;
     }
 
-    .logo {
-      width: min(460px, 90vw);
+    .hero-image {
+      display: block;
+      width: 100%;
+      max-width: 1500px;
       height: auto;
-      margin-bottom: 25px;
+      border-radius: 12px;
     }
 
-    h1 {
-      font-size: clamp(24px, 5vw, 42px);
-      margin: 10px 0 20px;
-    }
-
-    p {
-      color: #b9cde0;
-      max-width: 550px;
-      line-height: 1.7;
-    }
-
-    .deadline {
-      color: #27b8ff;
-      font-weight: bold;
-      margin-top: 25px;
+    .vip-area {
+      text-align: center;
+      margin-top: 12px;
     }
 
     .vip-button {
       display: inline-block;
-      background: #27b8ff;
-      color: #07111f;
-      padding: 16px 28px;
-      border-radius: 8px;
-      font-weight: bold;
+      padding: 18px 42px;
+      background: linear-gradient(
+        180deg,
+        #70eaff,
+        #27b8ff 60%,
+        #0788dc
+      );
+      color: #03101d;
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: 0.8px;
       text-decoration: none;
-      margin-top: 15px;
+      border: 1px solid #a4f3ff;
+      border-radius: 12px;
+      box-shadow:
+        0 0 16px rgba(39,184,255,0.65),
+        0 0 40px rgba(39,184,255,0.25);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
 
     .vip-button:hover {
-      background: #68d0ff;
+      transform: translateY(-3px);
+      box-shadow:
+        0 0 24px rgba(39,184,255,0.85),
+        0 0 55px rgba(39,184,255,0.4);
     }
 
-    .closed {
+    .vip-button:focus-visible {
+      outline: 3px solid white;
+      outline-offset: 5px;
+    }
+
+    .vip-button.closed {
       background: #34495e;
-      color: #fff;
+      color: #d0dbe5;
+      border-color: #526779;
+      box-shadow: none;
       cursor: default;
+    }
+
+    .vip-note {
+      color: #b9cde0;
+      font-size: 14px;
+      margin-top: 18px;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 20px 10px 40px;
+      }
+
+      .hero-image {
+        border-radius: 6px;
+      }
+
+      .vip-area {
+        width: 100%;
+        margin-top: 24px;
+      }
+
+      .vip-button {
+        width: min(100%, 360px);
+        padding: 17px 20px;
+        font-size: 16px;
+      }
+
+      .vip-note {
+        font-size: 12px;
+      }
     }
   </style>
 </head>
+
 <body>
-  <main>
+
+  <main class="hero">
+
     <img
-      class="logo"
-      src="ChatGPT-afbeelding%201%20nov%202026%2C%2012_08_52.png"
-      alt="DARTIQ official logo"
+      class="hero-image"
+      src="Slimmer%20darten%20met%20DARTIQ-coaching.png"
+      alt="DARTIQ - Stop Guessing. Start Improving. Identify weaknesses, understand your performance, and train with purpose."
+      fetchpriority="high"
     >
 
-    <h1>STOP GUESSING. START IMPROVING.</h1>
+    <div class="vip-area">
 
-    <p>
-      Discover your weaknesses.
-      Understand your performance.
-      Train with purpose.
-    </p>
+      <a
+        id="vipButton"
+        class="vip-button"
+        href="https://coach1979christian-coder.github.io/dartiq-web/dartiq-vip-register.html"
+      >
+        VIP EARLY ACCESS
+      </a>
 
-    <p>
-      The future of intelligent darts coaching is coming.
-    </p>
+      <p class="vip-note" id="vipNote">
+        7-day free trial. No payment details required.
+      </p>
 
-    <p class="deadline" id="deadline">
-      VIP REGISTRATION CLOSES DECEMBER 1, 2026
-    </p>
+    </div>
 
-    <a
-      id="vipButton"
-      class="vip-button"
-      href="https://coach1979christian-coder.github.io/dartiq-web/dartiq-vip-register.html"
-    >VIP EARLY ACCESS</a>
   </main>
 
   <script>
-    const nowInBelgium = new Date(
-      new Date().toLocaleString("en-US", {
-        timeZone: "Europe/Brussels"
-      })
-    );
+    // VIP registration closes at the end of December 1,
+    // 2026 in Belgian local time.
+    const belgianDate = new Intl.DateTimeFormat(
+      "en-CA",
+      {
+        timeZone: "Europe/Brussels",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit"
+      }
+    ).format(new Date());
 
-    const closingDate = new Date(2026, 11, 2);
+    const closingDate = "2026-12-01";
 
-    if (nowInBelgium >= closingDate) {
+    if (belgianDate > closingDate) {
       const button = document.getElementById("vipButton");
-      const deadline = document.getElementById("deadline");
+      const note = document.getElementById("vipNote");
 
       button.removeAttribute("href");
       button.classList.add("closed");
       button.textContent = "VIP REGISTRATION CLOSED";
-      deadline.textContent = "VIP FOUNDER REGISTRATION HAS ENDED";
+
+      note.textContent =
+        "VIP Founder registration has ended.";
     }
   </script>
+
 </body>
 </html>
