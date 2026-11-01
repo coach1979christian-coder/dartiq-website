@@ -4,60 +4,122 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07111f">
   <title>DARTIQ | Train Smarter. Play Better.</title>
   <style>
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
       background: #07111f;
-      color: white;
+      color: #fff;
       font-family: Arial, sans-serif;
       text-align: center;
     }
+
     main {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 20px;
-      box-sizing: border-box;
+      padding: 30px 20px;
     }
+
+    .logo {
+      width: min(460px, 90vw);
+      height: auto;
+      margin-bottom: 25px;
+    }
+
     h1 {
-      color: #27b8ff;
-      font-size: clamp(48px, 12vw, 90px);
-      margin-bottom: 10px;
+      font-size: clamp(24px, 5vw, 42px);
+      margin: 10px 0 20px;
     }
-    h2 {
-      font-size: clamp(22px, 5vw, 38px);
-    }
+
     p {
       color: #b9cde0;
       max-width: 550px;
       line-height: 1.7;
     }
-    a {
+
+    .deadline {
+      color: #27b8ff;
+      font-weight: bold;
+      margin-top: 25px;
+    }
+
+    .vip-button {
+      display: inline-block;
       background: #27b8ff;
       color: #07111f;
       padding: 16px 28px;
       border-radius: 8px;
       font-weight: bold;
       text-decoration: none;
-      margin-top: 25px;
+      margin-top: 15px;
+    }
+
+    .vip-button:hover {
+      background: #68d0ff;
+    }
+
+    .closed {
+      background: #34495e;
+      color: #fff;
+      cursor: default;
     }
   </style>
 </head>
 <body>
   <main>
-    <h1>DARTIQ</h1>
-    <h2>STOP GUESSING. START IMPROVING.</h2>
-    <p>
-      Discover your weaknesses. Understand your
-      performance. Train with purpose.
-    </p>
-    <p>The future of intelligent darts coaching is coming.</p>
-    
-<a href="https://coach1979christian-coder.github.io/dartiq-web/dartiq-vip-register.html">VIP EARLY ACCESS</a>
+    <img
+      class="logo"
+      src="21850.jpg"
+      alt="DARTIQ official logo"
+    >
 
+    <h1>STOP GUESSING. START IMPROVING.</h1>
+
+    <p>
+      Discover your weaknesses.
+      Understand your performance.
+      Train with purpose.
+    </p>
+
+    <p>
+      The future of intelligent darts coaching is coming.
+    </p>
+
+    <p class="deadline" id="deadline">
+      VIP REGISTRATION CLOSES DECEMBER 1, 2026
+    </p>
+
+    <a
+      id="vipButton"
+      class="vip-button"
+      href="https://coach1979christian-coder.github.io/dartiq-web/dartiq-vip-register.html"
+    >VIP EARLY ACCESS</a>
   </main>
+
+  <script>
+    const nowInBelgium = new Date(
+      new Date().toLocaleString("en-US", {
+        timeZone: "Europe/Brussels"
+      })
+    );
+
+    const closingDate = new Date(2026, 11, 2);
+
+    if (nowInBelgium >= closingDate) {
+      const button = document.getElementById("vipButton");
+      const deadline = document.getElementById("deadline");
+
+      button.removeAttribute("href");
+      button.classList.add("closed");
+      button.textContent = "VIP REGISTRATION CLOSED";
+      deadline.textContent = "VIP FOUNDER REGISTRATION HAS ENDED";
+    }
+  </script>
 </body>
 </html>
